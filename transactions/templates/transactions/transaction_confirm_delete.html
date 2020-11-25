@@ -1,0 +1,27 @@
+{%extends 'index.html'%}
+
+
+{%block content%}
+
+<br>
+<br>
+<div class="content-section container">
+    <form method="POST" enctype="multipart/form-data" >
+        {%csrf_token%}
+        <fieldset class="form-group">
+            <legend class="border-bottom md-4"> <b style="color: blue;">Delete Client</b> </legend>
+         <h3>Are you sure you want to delete client named {{transaction.clients_name}} ?</h3>
+          
+        </fieldset>
+        <div>
+            <button class="btn btn-outline-danger " type="submit">Yes,delete</button>
+            <a class="btn btn-outline-secondary " href="{%url 'transaction_home' %}">cancel</a>
+
+        </div>
+    </form>
+
+
+
+</div>
+
+{%endblock content%}

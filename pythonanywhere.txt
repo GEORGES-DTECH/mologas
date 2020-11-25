@@ -1,0 +1,4 @@
+mkvirtualenv mysystem --python=/usr/bin/python3.9
+
+unzip compressed.zip
+

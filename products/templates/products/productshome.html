@@ -1,0 +1,81 @@
+{%extends 'index.html'%}
+
+{%block content%}
+
+<br>
+<br>
+<br>
+<a href="{%url 'product_create'%}" class="btn-primary badge-pill btn-sm ml-0 mybuttons">Add products</a>
+<a href="{%url 'product_home'%}" class="btn-primary badge-pill btn-sm ml-4 mybuttons">Return</a>
+
+<b>Click on the date to update</b>
+
+    {%for product in products|slice:":1"%}
+    <!-- <b class="ml-2">Sales today.........{{product.sales_today_total}}</b> -->
+    {%endfor%}
+
+
+    <hr>
+    <a href=""><strong style="color: black;">STOCK </strong></a> 
+
+    <form action="{% url 'product_search' %}" method="get" style="display: inline-block;" class="ml-2">
+    
+        <input type="text" name="q" placeholder="search by product" class="box">
+        <b><input type="submit" name="" value="search"></b>
+    
+    </form>
+
+   
+   <br>
+   
+   <hr>
+   <div class="table-responsive ">
+        <table id="dataTable" class="table table-sm  table-light table-bordered  table-hover styleTable">
+          
+          
+            
+          <thead class="table-light">
+                    <th scope="col">Date</th>
+                    <th scope="col">Day</th>
+                    <th scope="col"> Product name</th>
+                    <!-- <th scope="col">For loan?</th> -->
+                    <th scope="col">Product quantity</th>
+                    <th scope="col">Sold products</th>
+                    <!-- <th scope="col">Price for each</th> -->
+                    <!-- <th scope="col">Total price</th> -->
+                    <th scope="col">Remaining products</th>
+                    <th scope="col">Added by</th>
+  
+                </tr>
+            </thead>
+        
+            <tbody>
+                <tr>
+                {%for product in object_list%}
+                    
+                    
+                    
+                    <td>  <b><a href="{%url 'product_update' product.id%}" style="color: black;">{{product.transaction_date|date:'j b,y'}}</a></b></td>
+                    <td >{{product.sales_day}}</td>
+                    <td >{{product.product_name}}</td>
+                    <!-- <td ><b>{{product.is_it_for_loan}}</b></td> -->
+         
+                    <td>{{product.product_quantity}}</td>
+                    <td>{{product.product_quantity_sold}}</td>
+                    <!-- <td><b>{{product.product_price}}</b></td> -->
+                    <!-- <td><b>{{product.actual_price}}</b></td> -->
+                   
+                    
+                    <td><a href="{%url 'product_delete' product.id%}" style="color: black;">{{product.remaining_stock}}</a></td>
+                    <td><a href="{%url 'product_delete' product.id%}" style="color: black;">{{product.lender}}</a></td>
+                   
+                    
+                </tr>
+                 </tbody>
+                {%endfor%}
+    </table>
+
+
+
+
+{%endblock%}

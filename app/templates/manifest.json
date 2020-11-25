@@ -1,0 +1,21 @@
+
+{
+    "name": "Mologas",
+    "short_name" : "Mologas",
+    "start_url": "./",
+    "scope" : "/",
+    "theme_color": "#f2f2f2",
+    "background_color": "#f2f2f2",
+    "display": "fullscreen",
+    "lang": "en-US",
+    
+    "icons": [
+        {
+            "src": "/static/images/my.png",
+            "sizes": "160x160",
+            "type": "image/png"
+        }
+        
+    ]
+    
+}

@@ -1,0 +1,32 @@
+{%extends 'index.html'%}
+{%load crispy_forms_tags%}
+
+{%block content%}
+<br>
+<br>
+<br>
+
+<div class="card ">
+    <div class="card-title">
+    <legend style="color: blue;"> Add products</legend>
+     </div>
+    <div class="card-body">
+        <!-- <div class="content-section container"> -->
+            <form method="POST" enctype="multipart/form-data">
+                {%csrf_token%}
+                <fieldset class="form-group">
+                    <legend class="border-bottom md-4"> </legend>
+
+                    {{form|crispy}}
+                </fieldset>
+                <div>
+                    <button class="btn btn-primary badge-pill" type="submit">submit</button>  <a href="{%url 'product_home'%} " ><button type="button" class="btn btn-outline-primary badge-pill ml-4">home</button></a>
+
+                </div>
+            </form>
+
+        <!-- </div> -->
+    </div>
+</div>
+
+{%endblock content%}

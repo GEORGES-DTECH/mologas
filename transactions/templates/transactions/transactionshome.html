@@ -1,0 +1,181 @@
+{%extends 'index.html'%}
+
+{%block content%}
+
+<br>
+<br>
+<br>
+
+
+
+{%for transaction in transactions|slice:":1"%}
+
+<div class="card" style="width: 25rem;">
+  <div class="card-header">
+    <b>REPORTS</b>
+  </div>
+
+<li class="list-group-item"> <b style="float: left; color: #00539cff;">Loans repaid</b> <b
+    style="float: right;">{{transaction.loans_repaid_total}}</b></li>
+
+
+<li class="list-group-item"> <b style="float: left; color: #00539cff;">Loans disbursed</b> <b
+    style="float: right;">{{transaction.loans_disbursed_total}}</b></li>
+
+<li class="list-group-item"> <b style="float: left; color: #00539cff;">Date today</b> <b
+    style="float: right;">{{transaction.the_date_today|date:'j b,y'}}</b></li>
+
+
+
+
+</div>
+
+{%endfor%}
+
+
+
+<hr>
+
+
+<a href="{%url 'transaction_create'%}" class="btn-primary badge-pill btn-sm ml-4 mybuttons">Add clients</a>
+<a href="{%url 'transaction_home'%}" class="btn-primary badge-pill btn-sm ml-4 mybuttons">Return</a>
+
+<hr>
+
+ 
+  <form action="{% url 'search_results' %}" method="get" style="display: inline-block;" class="ml-2">
+  
+    <input type="text" name="q" placeholder="search by id or name" class="box">
+    <b><input type="submit" name="" value="search"></b>
+  
+  </form>
+   
+   <hr>
+
+ {%for transaction in object_list%}
+ 
+
+    
+        <div class="card"  style="width: 25rem;" onclick="window.location='{%url 'transaction_update' transaction.id%}';" style="cursor: pointer;" >
+        <div class="card-header">
+          <b>CLIENT DETAILS</b>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"> <b style="float: left; color: #00539cff;">Name</b><b style="float: right;">{{transaction.clients_name}}</b></li>
+          <li class="list-group-item"> <b style="float: left; color: #00539cff;">Id no</b> <b style="float: right;">{{transaction.id_number}}</b></li>
+          <li class="list-group-item"> <b style="float: left; color: #00539cff;">Phone</b> <b
+                  style="float: right;">{{transaction.phone}}</b></li>
+          <li class="list-group-item"> <b style="float: left; color: #00539cff;">Lending date</b> <b
+                  style="float: right;">{{transaction.transaction_date|date:'j b,y'}}</b></li>
+
+          <li class="list-group-item"> <b style="float: left; color: #00539cff;">Amount applied</b> <b
+                      style="float: right;">{{transaction.amount_applied}}</b></li>
+
+
+          <li class="list-group-item"> <b style="float: left; color: #00539cff;">Amount payable</b> <b
+                        style="float: right;">{{transaction.loan_payable_amount}}</b></li>
+        
+          <li class="list-group-item"> <b style="float: left; color: #00539cff;">Interest charged</b> <b
+            style="float: right;">{{transaction.interest_due}}</b></li>
+        
+        <li class="list-group-item"> <b style="float: left; color: #00539cff;">Repaid amount</b> <b
+            style="float: right;">{{transaction.repayment}}</b></li>
+        
+        
+        <li class="list-group-item"> <b style="float: left; color: #00539cff;">Repayment day</b> <b
+            style="float: right;">{{transaction.repayment_day}}</b></li>
+
+        <li class="list-group-item"> <b style="float: left; color: #00539cff;">Repayment date</b> <b
+            style="float: right;">{{transaction.due_weekly_date|date:'j b,y'}}</b></li>
+        
+        <li class="list-group-item"> <b style="float: left; color: #00539cff;">Loan balance</b> <b
+            style="float: right;">{{transaction.loan_balance_calculation}}</b></li>
+        
+        <li class="list-group-item"> <b style="float: left; color: #00539cff;">Loan status</b> <b
+            style="float: right;">{{transaction.loan_status}}</b></li>
+        
+        
+        <li class="list-group-item"> <b style="float: left; color: #00539cff;">Physical address</b> <b
+            style="float: right;">{{transaction.physical_address}}</b></li>
+        
+        
+        <li class="list-group-item"> <b style="float: left; color: #00539cff;">Loan security</b> <b
+            style="float: right;">{{transaction.security_offered}}</b></li>
+        
+        
+        <li class="list-group-item"> <b style="float: left; color: #00539cff;">Approved by</b> <b
+            style="float: right;"><a href="{%url 'transaction_delete' transaction.id%}" style="color: black;">{{transaction.lender}}</a></b></li>
+        
+        
+      </ul>
+      
+      </div>
+      
+    
+
+
+  <hr>
+  {%endfor%}
+
+
+{%endblock%}
+
+
+
+
+
+
+
+<b style="color: black;">Client details</b>
+
+
+<b> Name:</b>{{transaction.clients_name}}<b>|Id</b>:{{transaction.id_number}}<b>|Phone</b>:{{transaction.phone}}
+
+<br>
+
+
+<b>Lending date..........................</b>{{transaction.transaction_date|date:'j b,y'}}
+
+<br>
+
+<b>Amount applied.......................</b>{{transaction.amount_applied}}
+
+
+<br>
+
+<b>Amount payable.......................</b>{{transaction.loan_payable_amount}}
+
+<br>
+
+<b>Interest charged.......................</b>{{transaction.interest_due}}
+
+
+<br>
+
+<b>Repaid amount.........................</b>{{transaction.repayment}}
+<br>
+<b>Repayment day.......................</b>{{transaction.repayment_day}}
+
+<br>
+
+
+<b>Repayment date.....................</b>{{transaction.due_weekly_date|date:'j b,y'}}
+
+
+<br>
+
+<b>Loan balance..........................</b>{{transaction.loan_balance_calculation}}
+
+
+
+<br>
+
+<b>Loan status.....................</b>{{transaction.loan_status}}
+<br>
+
+<b>Physical address......................</b>{{transaction.physical_address}}
+<br>
+<b>Security offered..</b>{{transaction.security_offered}}
+<br>
+<b>Approved by.......</b>{{transaction.lender}}
+<a href="{%url 'transaction_delete' transaction.id%}" class="btn-danger badge-pill btn-sm ml-4">delete</a>
