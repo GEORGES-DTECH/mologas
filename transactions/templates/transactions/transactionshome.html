@@ -10,7 +10,7 @@
 
 {%for transaction in transactions|slice:":1"%}
 
-<div class="card" style="width: 25rem;">
+<div class="card" style="width: 21rem;">
   <div class="card-header">
     <b>REPORTS</b>
   </div>
@@ -56,7 +56,7 @@
  
 
     
-        <div class="card"  style="width: 25rem;" onclick="window.location='{%url 'transaction_update' transaction.id%}';" style="cursor: pointer;" >
+        <div class="card"  style="width: 21rem;" onclick="window.location='{%url 'transaction_update' transaction.id%}';" style="cursor: pointer;" >
         <div class="card-header">
           <b>CLIENT DETAILS</b>
         </div>

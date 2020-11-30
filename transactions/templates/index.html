@@ -14,7 +14,7 @@
 <title></title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-
+<script src="static/js/script.js"></script>
   <style>
   *{
       font-family: Arial, Helvetica, sans-serif;
@@ -79,6 +79,78 @@ input[type="submit"]:hover {
 }
 
 
+#calculator{
+	width: 320px;
+	height: 520px;
+	background-color: #eaedef;
+	margin: 0 auto;
+	top: 20px;
+	position: relative;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#result{
+	height: 120px;
+}
+#history{
+	text-align: right;
+	height: 20px;
+	margin: 0 20px;
+	padding-top: 20px;
+	font-size: 15px;
+	color: #919191;
+}
+#output{
+	text-align: right;
+	height: 60px;
+	margin: 10px 20px;
+	font-size: 30px;
+}
+#keyboard{
+	height: 400px;
+}
+.operator, .number, .empty{
+	width: 50px;
+	height: 50px;
+	margin: 15px;
+	float: left;
+	border-radius: 50%;
+	border-width: 0;
+	font-weight: bold;
+	font-size: 15px;
+}
+.number, .empty{
+	background-color: #eaedef;
+}
+.number, .operator{
+	cursor: pointer;
+}
+.operator:active, .number:active{
+	font-size: 13px;
+}
+.operator:focus, .number:focus, .empty:focus{
+	outline: 0;
+}
+button:nth-child(4){
+	font-size: 20px;
+	background-color: #20b2aa;
+}
+button:nth-child(8){
+	font-size: 20px;
+	background-color: #ffa500;
+}
+button:nth-child(12){
+	font-size: 20px;
+	background-color: #f08080;
+}
+button:nth-child(16){
+	font-size: 20px;
+	background-color: #7d93e0;
+}
+button:nth-child(20){
+	font-size: 20px;
+	background-color: #9477af;
+}
   </style>
 
   
@@ -140,7 +212,7 @@ input[type="submit"]:hover {
 
   </header>
 
-  <div class="container pt-2" >
+  <div class="container-fluid" >
     {%if messages%}
     {%for message in messages%}
 
@@ -161,15 +233,52 @@ input[type="submit"]:hover {
     
     {% endblock content %}
 
+   
+<br>
+<br>
+
+ <footer>
+<div id="container">
+  <div id="calculator">
+    <div id="result">
+      <div id="history">
+        <p id="history-value"></p>
+      </div>
+      <div id="output">
+        <p id="output-value"></p>
+      </div>
+    </div>
+    <div id="keyboard">
+      <button class="operator" id="clear">C</button>
+      <button class="operator" id="backspace">CE</button>
+      <button class="operator" id="%">%</button>
+      <button class="operator" id="/">&#247;</button>
+      <button class="number" id="7">7</button>
+      <button class="number" id="8">8</button>
+      <button class="number" id="9">9</button>
+      <button class="operator" id="*">&times;</button>
+      <button class="number" id="4">4</button>
+      <button class="number" id="5">5</button>
+      <button class="number" id="6">6</button>
+      <button class="operator" id="-">-</button>
+      <button class="number" id="1">1</button>
+      <button class="number" id="2">2</button>
+      <button class="number" id="3">3</button>
+      <button class="operator" id="+">+</button>
+      <button class="empty" id="empty"></button>
+      <button class="number" id="0">0</button>
+      <button class="empty" id="empty"></button>
+      <button class="operator" id="=">=</button>
+    </div>
   </div>
+</div>
 
 
-
+</div>
 
 <br>
 <br>
-
- 
+ </footer>
 
   <footer class="text-muted">
     <div class="container text-center">
@@ -180,7 +289,10 @@ input[type="submit"]:hover {
       
     </div>
   </footer>
-
+  <script>
+  
+  </script>
+  <script src="{% static 'js/script.js' %}"></script>
  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
